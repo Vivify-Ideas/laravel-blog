@@ -4,6 +4,7 @@
         @include('partials.header')
     </head>
     <body>
+        @include('partials.navbar')
         <div class="blog-header">
             <div class="container">
                 <h1 class="blog-title">Laravel blog</h1>

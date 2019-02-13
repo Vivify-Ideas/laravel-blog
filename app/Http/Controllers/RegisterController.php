@@ -24,7 +24,8 @@ class RegisterController extends Controller
             'email', 'name', 'password'
         ]);
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
+        $user = User::create($data);
+        auth()->login($user);
         return redirect()->route('all-posts');
     }
 }
