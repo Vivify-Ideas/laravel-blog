@@ -20,6 +20,10 @@ Route::post('/register', 'RegisterController@store')->name('register');
 
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
+Route::get('/login', 'LoginController@create')->name('show-login');
+
+Route::post('/login', 'LoginController@store')->name('login');
+
 Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
 Route::get('/posts/create', ['as' => 'create-post', 'uses' => 'PostsController@create']);
