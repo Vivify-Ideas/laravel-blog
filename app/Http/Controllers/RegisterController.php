@@ -19,9 +19,12 @@ class RegisterController extends Controller
             'name' => 'required',
             'password' => 'required|min:6',
         ]);
-        User::create($request->only([
+        // alternative \Hash::make('')
+        $data = $request->only([
             'email', 'name', 'password'
-        ]));
+        ]);
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
         return redirect()->route('all-posts');
     }
 }
