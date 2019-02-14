@@ -14,15 +14,19 @@ use \App\Http\Controllers\CommentsController;
 |
 */
 
-Route::get('/register', 'RegisterController@create')->name('show-register');
+Route::group([ 'middleware' => ['guest'] ], function() {
+    Route::get('/register', 'RegisterController@create')
+        ->name('show-register');
+    Route::post('/register', 'RegisterController@store')
+        ->name('register');
+    Route::get('/login', 'LoginController@create')
+        ->name('show-login');
+    Route::post('/login', 'LoginController@store')
+        ->name('login');
+});
 
-Route::post('/register', 'RegisterController@store')->name('register');
 
 Route::get('/logout', 'LoginController@logout')->name('logout');
-
-Route::get('/login', 'LoginController@create')->name('show-login');
-
-Route::post('/login', 'LoginController@store')->name('login');
 
 Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
