@@ -30,6 +30,22 @@
         </div>
 
         <div class="form-group">
+            <label for="age">Age</label>
+            <select name="age" id="age" class="form-control">
+                @for ($i = 1; $i <= 100; $i++)
+                <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
+            @include('posts.partials.error-message', ['fieldTitle' => 'age'])
+        </div>
+
+        @if($message = session('message'))
+        <div class="alert alert-danger" role="alert">
+        {{ $message }}
+        </div>
+        @endif
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
         </div>
 

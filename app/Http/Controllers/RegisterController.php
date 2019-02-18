@@ -18,6 +18,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'name' => 'required',
             'password' => 'required|min:6',
+            'age' => 'required|integer|min:1'
         ]);
         // alternative \Hash::make('')
         $data = $request->only([
